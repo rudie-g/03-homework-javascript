@@ -103,92 +103,98 @@ function generatePassword() {
     }
   }
   // Generate password length
-  var pwLength = getRandom(8, 128);
-  // Prompt user for parameters
-  var uppercaseChar = confirm("Do you want uppercase characters?");
-  var specialChar = confirm("Do you want special characters?");
-  var numericChar = confirm("Do you want numeric characters?");
-  // When the user selects OK for all confirms
-  if (uppercaseChar === true && specialChar === true && numericChar === true) {
-        // Generate a password using all arrays
-        for (i = 0; i < pwLength; i++) {
-          getRandomArray(lowercasePW);
-          thePW = thePW.concat(getRandomArray(lowercasePW));
-          getRandomArray(uppercasePW);
-          thePW = thePW.concat(getRandomArray(uppercasePW));
-          getRandomArray(specialPW);
-          thePW = thePW.concat(getRandomArray(specialPW));
-          getRandomArray(numericPW);
-          thePW = thePW.concat(getRandomArray(numericPW));
-        }
-  // When the user declines the use of numeric characters      
-  } else if (uppercaseChar === true && specialChar === true && numericChar !== true) {
-        // Generate a password with all arrays except numericPW
-        for (i = 0; i < pwLength; i++) {
-          getRandomArray(lowercasePW);
-          thePW = thePW.concat(getRandomArray(lowercasePW));
-          getRandomArray(uppercasePW);
-          thePW = thePW.concat(getRandomArray(uppercasePW));
-          getRandomArray(specialPW);
-          thePW = thePW.concat(getRandomArray(specialPW));
-        }
-  // When the user declines the use of special characters
-  } else if (uppercaseChar === true && specialChar !== true && numericChar === true) {
-        // Generate a password with all arrays except specialPW
-        for (i = 0; i < pwLength; i++) {
-          getRandomArray(lowercasePW);
-          thePW = thePW.concat(getRandomArray(lowercasePW));
-          getRandomArray(uppercasePW);
-          thePW = thePW.concat(getRandomArray(uppercasePW));
-          getRandomArray(numericPW);
-          thePW = thePW.concat(getRandomArray(numericPW));
-        }
-  // When the user declines the use of uppercase characters
-  } else if (uppercaseChar !== true && specialChar === true && numericChar === true) {
-        // Generate a password with all arrays except uppercasePW
-        for (i = 0; i < pwLength; i++) {
-          getRandomArray(lowercasePW);
-          thePW = thePW.concat(getRandomArray(lowercasePW));
-          getRandomArray(specialPW);
-          thePW = thePW.concat(getRandomArray(specialPW));
-          getRandomArray(numericPW);
-          thePW = thePW.concat(getRandomArray(numericPW));
-        }
-  // When the user declines the use of special and numeric characters
-  } else if (uppercaseChar === true && specialChar !== true && numericChar !== true) {
-        // Generate a password with the lowercasePW and uppercasePW arrays
-        for (i = 0; i < pwLength; i++) {
-          getRandomArray(lowercasePW);
-          thePW = thePW.concat(getRandomArray(lowercasePW));
-          getRandomArray(uppercasePW);
-          thePW = thePW.concat(getRandomArray(uppercasePW));
-        }
-  // When the user declines the use of uppercase and numeric characters
-  } else if (uppercaseChar !== true && specialChar === true && numericChar !== true) {
-        // Generate a password with the lowercasePW and specialPW arrays
-        for (i = 0; i < pwLength; i++) {
-          getRandomArray(lowercasePW);
-          thePW = thePW.concat(getRandomArray(lowercasePW));
-          getRandomArray(specialPW);
-          thePW = thePW.concat(getRandomArray(specialPW));
-        }
-  // When the user declines the use of uppercase and special characters
-  } else if (uppercaseChar !== true && specialChar !== true && numericChar === true) {
-        // Generate a password using the lowercasePW and numericPW arrays
-        for (i = 0; i < pwLength; i++) {
-          getRandomArray(lowercasePW);
-          thePW = thePW.concat(getRandomArray(lowercasePW));
-          getRandomArray(numericPW);
-          thePW = thePW.concat(getRandomArray(numericPW));
-        }
-  // When the user declines all confirms
-  } else if (uppercaseChar !== true && specialChar !== true && numericChar !== true) {
-    // Generate a password using the lowercasePW array
-    for (i = 0; i < pwLength; i++) {
-      getRandomArray(lowercasePW);
-      thePW = thePW.concat(getRandomArray(lowercasePW));
+  var pwLength = prompt("How many characters would you like? Pick from 8 to 128");
+  if (pwLength >= 8 && pwLength <= 128) {
+    // Prompt user for parameters
+    var uppercaseChar = confirm("Do you want uppercase characters?");
+    var specialChar = confirm("Do you want special characters?");
+    var numericChar = confirm("Do you want numeric characters?");
+    // When the user selects OK for all confirms
+    if (uppercaseChar === true && specialChar === true && numericChar === true) {
+          // Generate a password using all arrays
+          for (i = 0; i < pwLength; i++) {
+            getRandomArray(lowercasePW);
+            thePW = thePW.concat(getRandomArray(lowercasePW));
+            getRandomArray(uppercasePW);
+            thePW = thePW.concat(getRandomArray(uppercasePW));
+            getRandomArray(specialPW);
+            thePW = thePW.concat(getRandomArray(specialPW));
+            getRandomArray(numericPW);
+            thePW = thePW.concat(getRandomArray(numericPW));
+          }
+    // When the user declines the use of numeric characters      
+    } else if (uppercaseChar === true && specialChar === true && numericChar !== true) {
+          // Generate a password with all arrays except numericPW
+          for (i = 0; i < pwLength; i++) {
+            getRandomArray(lowercasePW);
+            thePW = thePW.concat(getRandomArray(lowercasePW));
+            getRandomArray(uppercasePW);
+            thePW = thePW.concat(getRandomArray(uppercasePW));
+            getRandomArray(specialPW);
+            thePW = thePW.concat(getRandomArray(specialPW));
+          }
+    // When the user declines the use of special characters
+    } else if (uppercaseChar === true && specialChar !== true && numericChar === true) {
+          // Generate a password with all arrays except specialPW
+          for (i = 0; i < pwLength; i++) {
+            getRandomArray(lowercasePW);
+            thePW = thePW.concat(getRandomArray(lowercasePW));
+            getRandomArray(uppercasePW);
+            thePW = thePW.concat(getRandomArray(uppercasePW));
+            getRandomArray(numericPW);
+            thePW = thePW.concat(getRandomArray(numericPW));
+          }
+    // When the user declines the use of uppercase characters
+    } else if (uppercaseChar !== true && specialChar === true && numericChar === true) {
+          // Generate a password with all arrays except uppercasePW
+          for (i = 0; i < pwLength; i++) {
+            getRandomArray(lowercasePW);
+            thePW = thePW.concat(getRandomArray(lowercasePW));
+            getRandomArray(specialPW);
+            thePW = thePW.concat(getRandomArray(specialPW));
+            getRandomArray(numericPW);
+            thePW = thePW.concat(getRandomArray(numericPW));
+          }
+    // When the user declines the use of special and numeric characters
+    } else if (uppercaseChar === true && specialChar !== true && numericChar !== true) {
+          // Generate a password with the lowercasePW and uppercasePW arrays
+          for (i = 0; i < pwLength; i++) {
+            getRandomArray(lowercasePW);
+            thePW = thePW.concat(getRandomArray(lowercasePW));
+            getRandomArray(uppercasePW);
+            thePW = thePW.concat(getRandomArray(uppercasePW));
+          }
+    // When the user declines the use of uppercase and numeric characters
+    } else if (uppercaseChar !== true && specialChar === true && numericChar !== true) {
+          // Generate a password with the lowercasePW and specialPW arrays
+          for (i = 0; i < pwLength; i++) {
+            getRandomArray(lowercasePW);
+            thePW = thePW.concat(getRandomArray(lowercasePW));
+            getRandomArray(specialPW);
+            thePW = thePW.concat(getRandomArray(specialPW));
+          }
+    // When the user declines the use of uppercase and special characters
+    } else if (uppercaseChar !== true && specialChar !== true && numericChar === true) {
+          // Generate a password using the lowercasePW and numericPW arrays
+          for (i = 0; i < pwLength; i++) {
+            getRandomArray(lowercasePW);
+            thePW = thePW.concat(getRandomArray(lowercasePW));
+            getRandomArray(numericPW);
+            thePW = thePW.concat(getRandomArray(numericPW));
+          }
+    // When the user declines all confirms
+    } else if (uppercaseChar !== true && specialChar !== true && numericChar !== true) {
+      // Generate a password using the lowercasePW array
+      for (i = 0; i < pwLength; i++) {
+        getRandomArray(lowercasePW);
+        thePW = thePW.concat(getRandomArray(lowercasePW));
+      }
     }
+  } else {
+    alert("You didn't give me a valid number. Try again.")
   }
+  // Make sure thePW length matches pwLength
+  thePW.length = pwLength;
   // Shuffle the password
   shuffleArray(thePW);
   // The password is an array, format the commas out when returning it
